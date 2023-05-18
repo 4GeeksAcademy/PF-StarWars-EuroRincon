@@ -12,7 +12,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+				
+			],
+			characters: [],
+			character: null,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,7 +40,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			loadCharacters: () => {
+				fetch("https://www.swapi.tech/api/people")
+				  .then((response) => response.json())
+				  .then((response) => {
+					console.log(response.results);
+					setStore({ characters: response.results });
+				});
+			},
+			getCharacter: (id) => {
+				// fetch("https://rickandmortyapi.com/api/character/" + id)
+				fetch(`https://www.swapi.tech/api/people${uid}`)
+				  .then((response) => response.json())
+				  .then((response) => {
+					console.log(response);
+					setStore({ character: response });
+				});
+			},
 		}
 	};
 };
