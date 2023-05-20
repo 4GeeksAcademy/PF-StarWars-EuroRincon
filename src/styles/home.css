@@ -1,0 +1,4 @@
+.scrollFlow{
+    display: flex;
+    overflow-x: scroll;
+}

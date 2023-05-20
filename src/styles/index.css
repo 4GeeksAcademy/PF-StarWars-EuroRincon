@@ -1,3 +1,14 @@
 /* 
     General Styles
 */
+.cardHeight{
+    height: 350px;
+    object-fit: fill;
+}
+.card{
+    margin: 5px;
+}
+.buttonsCard{
+    display: flex;
+    justify-content: space-between;
+}

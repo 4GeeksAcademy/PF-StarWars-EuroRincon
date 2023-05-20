@@ -15,7 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 			],
 			characters: [],
+			planets: [],
 			character: null,
+			planet: [],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -45,19 +47,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://www.swapi.tech/api/people")
 				  .then((response) => response.json())
 				  .then((response) => {
-					console.log(response.results);
+					//console.log(response.results);
 					setStore({ characters: response.results });
 				});
 			},
-			getCharacter: (id) => {
-				// fetch("https://rickandmortyapi.com/api/character/" + id)
-				fetch(`https://www.swapi.tech/api/people${uid}`)
+			loadPlanets: () => {
+				fetch("https://www.swapi.tech/api/planets")
 				  .then((response) => response.json())
 				  .then((response) => {
-					console.log(response);
-					setStore({ character: response });
+					console.log(response.results);
+					setStore({ planets: response.results });
 				});
 			},
+			getCharacter: (uid) => {
+				console.log(uid);
+				fetch(`https://www.swapi.tech/api/people/${uid}`)
+					.then((response) => response.json())
+					.then((response) => {
+						//console.log(response);
+						setStore({ character: response });
+						
+					});
+				
+			},
+			getPlanet: (uid) => {
+				//console.log(uid);
+				fetch(`https://www.swapi.tech/api/planets/${uid}`)
+					.then((response) => response.json())
+					.then((response) => {
+						//console.log(response.result.uid);
+						setStore({ planet: response });
+						
+					});
+				
+			},
+			addDetailsToCharacters: (uid) => {
+				fetch(`https://www.swapi.tech/api/people/${uid}`)
+					.then((response) => response.json())
+					.then((response) => {
+						//console.log(response);
+						let newCharacters = getStore().characters.map(character => {
+							if (character.uid === uid) {
+								return Object.assign(character, response.result)
+							}else return character
+						})
+						setStore({ characters: newCharacters });
+						
+					});
+			}
 		}
 	};
 };
