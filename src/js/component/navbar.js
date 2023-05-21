@@ -15,19 +15,20 @@ export const Navbar = () => {
 							<img src="https://w7.pngwing.com/pngs/441/131/png-transparent-yoda-star-wars-logo-star-wars-text-star-wars-episode-vii-desktop-wallpaper.png" alt="Logo" width="110px" height="50px" />	
 						</span>
 					</Link>
-					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" 
+					aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 					</button>
 					<div className="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
-					<ul className="navbar-nav">
+					<ul className="navbar-nav" aria-labelledby="dropdownMenuClickableInside">
 						<li className="nav-item dropdown">
-						<button className="btn btn-primary dropdown-toggle favorites align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+						<button className="btn btn-primary dropdown-toggle favorites align-items-center" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuClickableInside" data-bs-auto-close="outside" >
 							Favorites
 							<div className="favoriteCount">
 							{store.favorites.length }
 							</div>
 						</button>
-						<ul className="dropdown-menu dropdown-menu-end dropdown-menu-primary">
+						<ul className="dropdown-menu dropdown-menu-end dropdown-menu-primary " aria-labelledby="dropdownMenuClickableInside">
 							{
 								
 								store.favorites.length == 0  ? <li className="favorite">
