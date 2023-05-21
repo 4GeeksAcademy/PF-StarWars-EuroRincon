@@ -29,7 +29,8 @@ export const Card_Character = (props) => {
                         <button
                             className="btn btn-warning"
                             onClick={() => {
-                                actions.setFavorite(character);
+                                actions.setFavorites(props.character);
+                                
                             }}
                         >
                             Like

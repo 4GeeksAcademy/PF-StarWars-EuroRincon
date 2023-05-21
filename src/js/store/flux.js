@@ -18,6 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			character: null,
 			planet: [],
+			favorites: [],
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -55,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://www.swapi.tech/api/planets")
 				  .then((response) => response.json())
 				  .then((response) => {
-					console.log(response.results);
+					//console.log(response.results);
 					setStore({ planets: response.results });
 				});
 			},
@@ -94,6 +95,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ characters: newCharacters });
 						
 					});
+			},
+			setFavorites: (element) => {
+				let store = getStore();
+				//console.log(store.favorites);
+				if (!store.favorites.includes(element)) {
+					setStore ({favorites : [...store.favorites, element]})
+				}
+			},
+			deleteFavorite: (element) => {
+				//console.log(element);
+				let store = getStore();
+				const filtered = store.favorites.filter((e) =>{
+					return e != element;
+				})
+				//console.log(filtered);
+				setStore ({favorites : filtered});
 			}
 		}
 	};

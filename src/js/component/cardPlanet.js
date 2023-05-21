@@ -35,7 +35,7 @@ export const Card_Planet = (props) => {
                         <button
                             className="btn btn-warning"
                             onClick={() => {
-                                actions.setFavorite(planet);
+                                actions.setFavorites(props.planet);
                             }}
                         >
                             Like

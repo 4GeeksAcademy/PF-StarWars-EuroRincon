@@ -12,3 +12,25 @@
     display: flex;
     justify-content: space-between;
 }
+.favoriteCount{
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 25%;
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+    
+}
+.favorites{
+    display: flex;
+    padding: 5px 7px;
+}
+li .dropdown-item{
+    width: auto;
+    padding: 0;
+    margin-left: 5px;
+}
+.favorite{
+    align-items: center;
+    display: flex;
+}
