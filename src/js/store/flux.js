@@ -16,8 +16,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			characters: [],
 			planets: [],
+			vehicles: [],
 			character: null,
 			planet: [],
+			vehicle: [],
 			favorites: [],
 		},
 		actions: {
@@ -60,6 +62,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ planets: response.results });
 				});
 			},
+			loadVehicles: () => {
+				fetch("https://www.swapi.tech/api/vehicles")
+				  .then((response) => response.json())
+				  .then((response) => {
+					//console.log(response.results);
+					setStore({ vehicles: response.results });
+				});
+			},
 			getCharacter: (uid) => {
 				console.log(uid);
 				fetch(`https://www.swapi.tech/api/people/${uid}`)
@@ -78,6 +88,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((response) => {
 						//console.log(response.result.uid);
 						setStore({ planet: response });
+						
+					});
+				
+			},
+			getVehicle: (uid) => {
+				//console.log(uid);
+				fetch(`https://www.swapi.tech/api/vehicles/${uid}`)
+					.then((response) => response.json())
+					.then((response) => {
+						console.log(response.result.uid);
+						setStore({ vehicle: response });
 						
 					});
 				
